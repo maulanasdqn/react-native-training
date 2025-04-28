@@ -1,9 +1,9 @@
-import { onlineManager } from "@tanstack/react-query";
-import * as Network from "expo-network";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { FC, PropsWithChildren, useState } from "react";
 
-onlineManager.setEventListener((setOnline) => {
-  const eventSubscription = Network.addNetworkStateListener((state) => {
-    setOnline(!!state.isConnected);
-  });
-  return eventSubscription.remove;
-});
+export const QueryProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [queryClient] = useState(() => new QueryClient());
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+};

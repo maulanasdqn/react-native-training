@@ -1,3 +1,5 @@
+import { AxiosError } from "axios";
+
 export type TResponseList<T> = {
   data: T[];
   meta: {
@@ -16,3 +18,9 @@ export type TResponseDetail<T> = {
   data: T;
   version: number;
 };
+
+export type TResponseMessage = {
+  message: string;
+};
+
+export type TResponseError = AxiosError<TResponseMessage>;

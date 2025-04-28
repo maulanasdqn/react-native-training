@@ -1,9 +1,11 @@
 import { z } from "zod";
-import { loginSchema } from "./schema";
-import { TResponseDetail } from "@/commons/types/response";
+import { loginSchema, registerSchema } from "./schema";
+import { TResponseDetail, TResponseMessage } from "@/commons/types/response";
 import { TUserItem } from "../users/type";
 
 export type TLoginRequest = z.infer<typeof loginSchema>;
+
+export type TRegisterRequest = z.infer<typeof registerSchema>;
 
 export type TTokenItem = {
   access_token: string;
@@ -16,3 +18,5 @@ export type TLoginItem = {
 };
 
 export type TLoginResponse = TResponseDetail<TLoginItem>;
+
+export type TRegisterResponse = TResponseDetail<TResponseMessage>;

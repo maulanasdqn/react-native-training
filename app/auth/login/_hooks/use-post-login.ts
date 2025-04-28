@@ -13,7 +13,7 @@ export const usePostLogin = (): UseMutationResult<
   const { signIn } = useAuthStore();
   return useMutation({
     mutationKey: ["post-login"],
-    mutationFn: async (payload) => await postLogin(payload),
+    mutationFn: postLogin,
     onSuccess: (res) => {
       signIn(res.data.token, res.data.user);
     },
