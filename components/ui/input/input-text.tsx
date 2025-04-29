@@ -18,7 +18,7 @@ export const InputText = <T extends FieldValues>({
   label,
   ...props
 }: TInputTextProps<T>) => {
-  const { field } = useController<T>({
+  const { field, fieldState } = useController<T>({
     name,
     control,
   });
@@ -34,13 +34,18 @@ export const InputText = <T extends FieldValues>({
         style={[
           {
             borderWidth: 1,
-            borderColor: "#ccc",
+            borderColor: fieldState.error ? "red" : "#ccc",
             padding: 10,
             borderRadius: 5,
           },
           props.style,
         ]}
       />
+      {fieldState.error?.message && (
+        <Text style={{ color: "red", marginTop: 4, fontSize: 12 }}>
+          {fieldState.error.message}
+        </Text>
+      )}
     </View>
   );
 };
