@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { InputText } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useRegister } from "./_hooks/use-register";
+import { useRegister } from "@/hooks/register/use-register";
 
 export default function RegisterScreen() {
   const { form, handler } = useRegister();

@@ -1,11 +1,10 @@
-import { TTokenItem } from "@/api/auth/type";
-import { TUserItem } from "@/api/users/type";
+import { TLoginResponse } from "@/api/auth/type";
 import { create } from "zustand";
 
 type TAuthState = {
-  token: TTokenItem | null;
-  userData: TUserItem | null;
-  signIn: (token: TTokenItem, user: TUserItem) => void;
+  token: string | null;
+  userData: TLoginResponse | null;
+  signIn: (token: string, user: TLoginResponse) => void;
   signOut: () => void;
 };
 

@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { loginSchema, registerSchema } from "./schema";
 import { TResponseDetail, TResponseMessage } from "@/commons/types/response";
-import { TUserItem } from "../users/type";
 
 export type TLoginRequest = z.infer<typeof loginSchema>;
 
@@ -12,11 +11,16 @@ export type TTokenItem = {
   refresh_token: string;
 };
 
-export type TLoginItem = {
-  token: TTokenItem;
-  user: TUserItem;
+export type TLoginResponse = {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: "male" | "female";
+  image: string;
+  accessToken: string;
+  refreshToken: string;
 };
-
-export type TLoginResponse = TResponseDetail<TLoginItem>;
 
 export type TRegisterResponse = TResponseDetail<TResponseMessage>;

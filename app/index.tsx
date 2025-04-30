@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button/button";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 export default function Index() {
   return (
@@ -10,6 +10,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
+      <Text style={{ fontSize: 20, fontWeight: "bold", color: "black" }}>
+        Welcome to React
+      </Text>
       <Button title={"Test Button"} />
     </View>
   );
