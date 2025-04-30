@@ -1,7 +1,6 @@
-import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import RegisterScreen from "../index";
+import RegisterScreen from "@/app/auth/register/index";
 
 const createWrapper = () => {
   const queryClient = new QueryClient();
