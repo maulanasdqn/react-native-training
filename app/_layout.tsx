@@ -1,11 +1,12 @@
 import { QueryProvider } from "@/components/provider/query-provider";
 import { Stack } from "expo-router";
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <QueryProvider>
           <Stack />
         </QueryProvider>

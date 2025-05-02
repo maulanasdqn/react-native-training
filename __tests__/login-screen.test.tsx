@@ -2,11 +2,29 @@ import { render, fireEvent, waitFor } from "@testing-library/react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginScreen from "@/app/auth/login";
 import { useAuthStore } from "@/stores/auth-store";
+import { NavigationContainer } from "@react-navigation/native";
+
+jest.mock("expo-router", () => {
+  const actual = jest.requireActual("expo-router");
+  return {
+    ...actual,
+    useRouter: () => ({
+      push: jest.fn(),
+      replace: jest.fn(),
+      back: jest.fn(),
+      prefetch: jest.fn(),
+      isReady: true,
+    }),
+    useLocalSearchParams: () => ({}),
+  };
+});
 
 const createWrapper = () => {
   const queryClient = new QueryClient();
   return ({ children }: { children: React.ReactNode }) => (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>{children}</NavigationContainer>
+    </QueryClientProvider>
   );
 };
 
@@ -44,7 +62,7 @@ describe("Login Screen", () => {
         const { userData, token } = useAuthStore.getState();
         expect(userData).toBeTruthy();
         expect(userData?.username).toBe("dummyuser");
-        expect(token?.access_token).toBe("fake-access-token");
+        expect(token).toBe("fake-access-token");
       },
       { timeout: 2000 }
     );

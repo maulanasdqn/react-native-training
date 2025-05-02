@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button/button";
+import { useRouter } from "expo-router";
 import { Text, View } from "react-native";
 
 export default function Index() {
+  const router = useRouter();
   return (
     <View
       style={{
@@ -13,7 +15,7 @@ export default function Index() {
       <Text style={{ fontSize: 20, fontWeight: "bold", color: "black" }}>
         Welcome to React
       </Text>
-      <Button title={"Test Button"} />
+      <Button onPress={() => router.push("/auth/login")} title="Login" />
     </View>
   );
 }
